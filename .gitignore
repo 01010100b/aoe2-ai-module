@@ -4,3 +4,6 @@
 
 /.vs
 /aimodule/.vs
+/aimodule/protos
+/client_python/protos
+/aimodule/bin

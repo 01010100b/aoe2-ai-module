@@ -1,6 +1,6 @@
 @echo off
 set workspace_path=%~dp0..
-set vcpkg_path=%workspace_path%\vcpkg
+set vcpkg_path=%workspace_path%\..\vcpkg
 set protoc_path=%vcpkg_path%\installed\x64-windows-static\tools\protobuf\protoc.exe
 set grpc_cpp_path=%vcpkg_path%\installed\x64-windows\tools\grpc\grpc_cpp_plugin.exe
 set grpc_python_path=%vcpkg_path%\installed\x64-windows\tools\grpc\grpc_python_plugin.exe
