@@ -12,6 +12,8 @@ The AI module consists of a DLL file that has to be loaded into the Age of Empir
 
 At the moment the 32-bit version of the module supports AoC with Userpatch 1.5 and the 64-bit one supports builds 43210 and higher.
 
+You can specify the RPC server port with the `-aimoduleport` command line argument.
+
 Note that this library is still under development and is not an easy to use solution just yet. There may be bugs, unsupported functionality and the release binaries might not always be up to date.
 
 # Compiling

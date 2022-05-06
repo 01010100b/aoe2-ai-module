@@ -8,10 +8,12 @@ RPCServer::RPCServer(AIModule* aiModule) :
 	aiModule(aiModule),
 	assignedServerPort(-1)
 {
-	server = BuildAndStart(aimodule_conf::RPC_SERVER_ADDRESS, assignedServerPort);
+	int port = statics::GetRpcServerPort();
+	std::string address = aimodule_conf::RPC_SERVER_ADDRESS + ":" + std::to_string(port);
+	server = BuildAndStart(address, assignedServerPort);
 	if (!server)
 	{
-		std::cout << "[RPC Server] Warning: failed to bind to " << aimodule_conf::RPC_SERVER_ADDRESS << "." << std::endl;
+		std::cout << "[RPC Server] Warning: failed to bind to " << address << "." << std::endl;
 		server = BuildAndStart("0.0.0.0:0", assignedServerPort);
 	}
 	

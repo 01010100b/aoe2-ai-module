@@ -51,4 +51,29 @@ namespace statics
 
 		return 0;
 	}
+
+	// Get RPC server port
+	// Just something that gets the job done right now
+	// This doesn't account for all cases, such as quotation marks around the parameter value
+	static int GetRpcServerPort()
+	{
+		std::wstring CmdLine(GetCommandLine());
+		std::wstring Keyword = L"-aimoduleport ";
+
+		unsigned int Pos = CmdLine.find(Keyword);
+		if (Pos != -1)
+		{
+			Pos += Keyword.length();
+			std::wstring PortString = L"    ";
+			while (Pos < CmdLine.length() &&
+				((CmdLine[Pos] >= '0' && CmdLine[Pos] <= '9') || CmdLine[Pos] == ' '))
+			{
+				PortString += CmdLine[Pos++];
+			}
+
+			return _wtoi(PortString.c_str());
+		}
+
+		return 37412;
+	}
 }
