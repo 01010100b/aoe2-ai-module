@@ -19,39 +19,16 @@ void ExpertCommandHandler::GetMapDimensions(const google::protobuf::Any& anyComm
 	anyResult->PackFrom(result);
 }
 
-// to prevent scanning for buildings by the foundation terrain type,
-// generalize the terrain types so that both foundation and desert would
-// for example return the grass terrain type which should be functionally
-// equivalent
 int ExpertCommandHandler::GeneralizeTerrainType(int terrainId)
 {
 	switch (terrainId)
 	{
-		case 1: // terrain-water
-		case 15: // terrain-water-old
-		case 22: // terrain-water-deep
-		case 23: // terrain-water-medium
-		case 28: // terrain-water-bridge
-		{
-			return 1; // terrain-water
-		}
-		case 2: // terrain-water-beach
-		case 37: // terrain-ice-beach
-		{
-			return 2; // terrain-water-beach
-		}
-		case 4: // terrain-shallows
-		{
-			return 4; // terrain-shallows
-		}
-		case 26: // terrain-ice
-		case 35: // terrain-ice2
-		{
-			return 26; // terrain-ice
-		}
+	case 27: // foundation
+	case 29: // farm
+	case 30: // farm
+	case 31: return 0; // farm
+	default: return terrainId;
 	}
-
-	return 0; // terrain-grass
 }
 
 void ExpertCommandHandler::GetTiles(const google::protobuf::Any& anyCommand, google::protobuf::Any* anyResult)
