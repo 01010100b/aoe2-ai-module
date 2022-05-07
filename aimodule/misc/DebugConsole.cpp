@@ -14,7 +14,10 @@ DebugConsole::DebugConsole(AIModule* aiModule) :
 	aiModule(aiModule),
 	isEnabled(false)
 {
-	Enable();
+	if (statics::UseDebugConsole())
+	{
+		Enable();
+	}
 }
 
 void DebugConsole::Enable()

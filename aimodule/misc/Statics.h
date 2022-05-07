@@ -59,8 +59,8 @@ namespace statics
 	{
 		std::wstring CmdLine(GetCommandLine());
 		std::wstring Keyword = L"-aimoduleport ";
-
 		unsigned int Pos = CmdLine.find(Keyword);
+
 		if (Pos != -1)
 		{
 			Pos += Keyword.length();
@@ -75,5 +75,14 @@ namespace statics
 		}
 
 		return 37412;
+	}
+
+	static bool UseDebugConsole()
+	{
+		std::wstring CmdLine(GetCommandLine());
+		std::wstring Keyword = L"-aidebug ";
+		unsigned int Pos = CmdLine.find(Keyword);
+
+		return Pos != -1;
 	}
 }
